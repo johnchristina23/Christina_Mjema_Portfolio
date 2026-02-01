@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Christina Mjema | Interactive ML / AI Portfolio</title>
+  <style>
+    :root {
+      --bg: #020617;
+      --card: #0f172a;
+      --accent: #22d3ee;
+      --accent2: #a78bfa;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #020617, #000000);
+      color: var(--text);
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      position: relative;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 0.25rem; /* reduced spacing */
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem; /* reduced spacing */
+    }
+
+    .header-info p {
+      margin: 0.25rem 0 1.5rem; /* compact spacing for job titles */
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 2rem; /* button placed below XP bar */
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #020617;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 5rem 2rem;
+    }
+
+    section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--card), #020617);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 70px rgba(0,0,0,0.8);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(34,211,238,0.15);
+      color: var(--accent);
+      font-size: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .image {
+      height: 150px;
+      background: linear-gradient(135deg, #22d3ee33, #a78bfa33);
+      border-radius: 14px;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #e5e7eb;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .details {
+      display: none;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .card.open .details { display: block; }
+
+    .xp-bar {
+      max-width: 400px;
+      margin: 1.5rem auto 0; /* slightly reduced margin */
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .xp-fill {
+      width: 82%;
+      height: 14px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      border-top: 1px solid #1e293b;
+      color: var(--muted);
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Christina Mjema</h1>
+    <p class="subtitle">Building intelligent systems that explain themselves</p>
+    <div class="header-info">
+      <p>ML / AI Researcher • Machine Learning Engineer • Data Engineer</p>
+    </div>
+
+    <div class="xp-bar">
+      <div class="xp-fill"></div>
+    </div>
+    <small>Researcher XP: Level 8 / 10</small>
+
+    <div><a class="cta" href="#projects">Start the Journey ↓</a></div>
+  </div>
+</header>
+
+<section id="skills">
+  <h2>🧠 Skill Tree</h2>
+  <div class="story">
+    <div class="card">
+      <h3>Machine Learning & AI</h3>
+      <p>Survival analysis, predictive modeling, time-series forecasting, explainable AI (SHAP, LIME)</p>
+    </div>
+    <div class="card">
+      <h3>Deep Learning</h3>
+      <p>Neural networks, RNN, LSTM, CNN, attention mechanisms, reinforcement learning, TensorFlow</p>
+    </div>
+    <div class="card">
+      <h3>Data Engineering</h3>
+      <p>SQL, PostgreSQL, MySQL, MSSQL, AWS, Docker, scalable data systems</p>
+    </div>
+    <div class="card">
+      <h3>Programming</h3>
+      <p>Python, Java, C/C++, JavaScript, R · Git version control · Linux environments</p>
+    </div>
+    <div class="card">
+      <h3>Research & Communication</h3>
+      <p>Experimental design, model evaluation, academic writing, technical presentations, teaching & mentoring</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>🧪 Projects (Playable Levels)</h2>
+  <div class="story">
+
+    <div class="card" onclick="toggleCard(this)">
+      <img class="image" src="22388.png" alt="Survival analysis curve">
+      <span class="badge">Research / ML</span>
+      <h3>Gas Well Lifecycle Prediction</h3>
+      <p>Time-sensitive random survival models with explainable AI.</p>
+      <p>Tech: Python, R, scikit- survival, pandas, NumPy, Matplotlib, SHAP, LIME, time-varying Cox, RSF, hybrid models, Longitudinal predictors modeling</p>
+      <div class="details">
+        <ul>
+          <li>2M+ records, 30-year horizons</li>
+          <li>Time-varying Cox, RSF, hybrid models</li>
+          <li>SHAP & LIME faithfulness analysis</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <img class="image" src="portfolio_RUL.png" alt="Explainability comparison">
+      <span class="badge">Explainable AI · Seminar</span>
+      <h3>Explainability in RUL Prediction</h3>
+      <p>Interpretability vs performance trade-offs in process outcome prediction.</p>
+      <p>Tech: Python, scikit-learn, XGBoost, TensorFlow/Keras, SHAP, LIME, attention-based explainers, Matplotlib</p>
+      <div class="details">
+        <ul>
+          <li>Based on EJOR 2024 (Stevens & De Smedt)</li>
+          <li>Compared LR, RF, XGB, CNN, LSTM, GLRM</li>
+          <li>Extended metrics to RUL regression</li>
+          <li>Presented at COSC 590D, UBC (Aug 2024)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <img class="image" src="portfolio_RL.png" alt="Model pipeline">
+      <span class="badge">Deep Learning</span>
+      <h3>Turbo Engine Maintenance</h3>
+      <p>Tech: Python, TensorFlow/Keras, Deep Learning, Reinforcement Learning, Time-Series Analysis, Model Evaluation, Predictive Maintenance</p>
+      <div class="details">
+        <ul>
+          <li>Built and evaluated CNN, LSTM, and Reinforcement Learning (RL) models for Remaining Useful Life (RUL) prediction using NASA turbofan multivariate time-series sensor data.</li>
+          <li>Achieved state-of-the-art performance with LSTM (MSE = 0.0000124, MAE = 0.0027, R² = 0.9995), outperforming CNN (R² = 0.9935).</li>
+          <li>Designed and analyzed an RL-based predictive maintenance framework, assessing reward convergence, model limitations, and validating performance using MSE, MAE, and R², with extensions proposed for oil-well RUL prediction.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <img class="image" src="SHAP_forceSample_RF_MIMIC.png" alt="Architecture diagram">
+      <span class="badge">Data Science</span>
+      <h3>Medical Data Analysis</h3>
+      <p>ICU mortality prediction using eICU and MIMIC-III datasets.</p>
+      <p>Tech: Python, scikit-learn, pandas, NumPy, Matplotlib, Seaborn, logistic regression, random forest, AdaBoost, Naive Bayes, eICU/MIMIC-III datasets</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <h2>📬 Contact</h2>
+  <div class="story">
+    <div class="card">
+      <h3>Let’s talk</h3>
+      <p>If you’re interested in ML/AI research, applied machine learning, or data engineering collaborations, I’d love to connect.</p>
+      <p>
+        📧 <a href="mailto:mjemachristinaj@gmail.com">mjemachristinaj@gmail.com</a><br/>
+        💼 <a href="https://www.linkedin.com/in/mjema-christina-john/" target="_blank">LinkedIn</a><br/>
+        🧠 <a href="https://github.com/johnchristina23" target="_blank">GitHub</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Christina Mjema</p>
+</footer>
+
+<script>
+  function toggleCard(card) {
+    card.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
