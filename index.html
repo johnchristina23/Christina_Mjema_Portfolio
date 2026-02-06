@@ -24,10 +24,10 @@
     }
 
     header {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      min-height: auto;
+      padding: 3rem 1.5rem 2rem;
+      display: block;
+      text-align: center;
       text-align: center;
       padding: 3rem 1.5rem;
       position: relative;
@@ -48,27 +48,19 @@
       margin: 0.25rem 0 1.5rem; /* compact spacing for job titles */
     }
 
-    .cta {
-      display: inline-block;
-      margin-top: 2rem; /* button placed below XP bar */
-      padding: 0.75rem 1.5rem;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #020617;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
     section {
       max-width: 1200px;
       margin: auto;
-      padding: 5rem 2rem;
+      padding: 2.5rem 2rem;
     }
 
+
     section h2 {
-      font-size: 2.2rem;
-      margin-bottom: 2rem;
-      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
+      text-align: left;
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 0.4rem;
     }
 
     .story {
@@ -103,7 +95,7 @@
     }
 
     .image {
-      height: 150px;
+      height: 140px;
       background: linear-gradient(135deg, #22d3ee33, #a78bfa33);
       border-radius: 14px;
       margin-bottom: 1.25rem;
@@ -115,6 +107,8 @@
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
+      padding: 0.75rem;
+      background-size: contain;
     }
 
     .details {
@@ -149,6 +143,88 @@
     }
 
     a { color: var(--accent); text-decoration: none; }
+
+
+      /* Publications */
+  .publications {
+    display: grid;
+    gap: 2rem;
+  }
+  
+  .pub-card {
+    background: linear-gradient(180deg, #020617, var(--card));
+    border-left: 4px solid var(--accent);
+    border-radius: 16px;
+    padding: 1.75rem 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .pub-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+  }
+  
+  .pub-meta {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  
+  .pub-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  
+  .pub-links a {
+    font-size: 0.85rem;
+    margin-right: 1rem;
+  }
+
+    /* Skills – compact, research-style */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+  }
+
+  .skill-group {
+    flex: 1 1 180px;
+    border-left: 2px solid var(--accent);
+    padding-left: 1rem;
+    max-width: 220px;
+  }
+
+
+  .skill-group h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #e5e7eb;
+    font-weight: 600;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .skill-tag {
+    font-size: 0.72rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    background: #020617;
+    border: 1px solid #1e293b;
+    color: var(--muted);
+  }
+
+  .muted {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin: 0.3rem 0 0.6rem;
+  }
+
   </style>
 </head>
 <body>
@@ -156,48 +232,131 @@
 <header>
   <div>
     <h1>Christina Mjema</h1>
+    <p class="subtitle">
+      MSc Computer Science · University of British Columbia · AI & Survival Analysis
+    </p>
     <p class="subtitle">Building intelligent systems that explain themselves</p>
     <div class="header-info">
       <p>ML / AI Researcher • Machine Learning Engineer • Data Engineer</p>
     </div>
-
-    <div class="xp-bar">
-      <div class="xp-fill"></div>
-    </div>
-    <small>Researcher XP: Level 8 / 10</small>
-
-    <div><a class="cta" href="#projects">Start the Journey ↓</a></div>
   </div>
 </header>
 
 <section id="skills">
-  <h2>Skill Tree</h2>
-  <div class="story">
-    <div class="card">
+  <h2>Skills</h2>
+
+  <div class="skills-grid">
+
+    <div class="skill-group">
       <h3>Machine Learning & AI</h3>
-      <p>Survival analysis, predictive modeling, time-series forecasting, explainable AI (SHAP, LIME)</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Survival Analysis</span>
+        <span class="skill-tag">Predictive Modeling</span>
+        <span class="skill-tag">Time-Series</span>
+        <span class="skill-tag">Explainable AI</span>
+        <span class="skill-tag">SHAP</span>
+        <span class="skill-tag">LIME</span>
+      </div>
     </div>
-    <div class="card">
+
+    <div class="skill-group">
       <h3>Deep Learning</h3>
-      <p>Neural networks, RNN, LSTM, CNN, attention mechanisms, reinforcement learning, TensorFlow</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Neural Networks</span>
+        <span class="skill-tag">CNN</span>
+        <span class="skill-tag">RNN</span>
+        <span class="skill-tag">LSTM</span>
+        <span class="skill-tag">Attention</span>
+        <span class="skill-tag">Reinforcement Learning</span>
+      </div>
     </div>
-    <div class="card">
+
+    <div class="skill-group">
       <h3>Data Engineering</h3>
-      <p>SQL, PostgreSQL, MySQL, MSSQL, AWS, Docker, scalable data systems</p>
+      <div class="skill-tags">
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">MSSQL</span>
+        <span class="skill-tag">Databricks</span>
+        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">Docker</span>
+      </div>
     </div>
-    <div class="card">
+
+    <div class="skill-group">
       <h3>Programming</h3>
-      <p>Python, Java, C/C++, JavaScript, R · Git version control · Linux environments</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">PySpark</span>
+        <span class="skill-tag">C/C++</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">R</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Linux</span>
+      </div>
     </div>
-    <div class="card">
+
+    <div class="skill-group">
       <h3>Research & Communication</h3>
-      <p>Experimental design, model evaluation, academic writing, technical presentations, teaching & mentoring</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Experimental Design</span>
+        <span class="skill-tag">Model Evaluation</span>
+        <span class="skill-tag">Academic Writing</span>
+        <span class="skill-tag">Teaching</span>
+        <span class="skill-tag">Mentorship</span>
+      </div>
     </div>
+
+  </div>
+</section>
+
+
+  <section id="training">
+  <h2>Training & Certifications</h2>
+  <div class="story">
+
+    <div class="card">
+      <span class="badge">Graduate Coursework</span>
+      <h3>Advanced Machine Learning</h3>
+      <p>
+        Deep learning, survival analysis, explainable AI, reinforcement learning,
+        and large-scale experimentation.
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="badge">Teaching & Mentorship</span>
+      <h3>Graduate Teaching Assistant</h3>
+      <p>
+        Data Structures & Algorithms, Parallel Computing, Web Programming,
+        Capstone Software Engineering.
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="badge">Professional Training</span>
+      <h3>Cloud & MLOps Foundations</h3>
+      <p>
+        Dockerized ML pipelines, AWS-based deployments, reproducible research workflows.
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="badge">Certifications</span>
+      <h3>Ongoing & Completed</h3>
+      <p>
+        Machine Learning Specializations, Deep Learning with TensorFlow,
+        Advanced Data Analytics (self-paced & academic).
+      </p>
+    </div>
+
   </div>
 </section>
 
 <section id="projects">
-  <h2>Projects (Playable Levels)</h2>
+  <h2>Research & Applied Work</h2>
   <div class="story">
 
     <div class="card" onclick="toggleCard(this)">
@@ -206,8 +365,7 @@
       </a>
       <span class="badge">Research / ML</span>
       <h3>Gas Well Lifecycle Prediction</h3>
-      <p>Time-sensitive random survival models with explainable AI.</p>
-      <div class="details">
+      <p class="muted">Survival analysis • Gas well lifecycle modeling • Longitudinal production data</p>      <div class="details">
         <ul>
           <li>2M+ records, 30-year horizons</li>
           <li>Time-varying Cox, RSF, hybrid models</li>
@@ -223,7 +381,7 @@
       </a>
       <span class="badge">Explainable AI · Seminar</span>
       <h3>Explainability in RUL Prediction</h3>
-      <p>Interpretability vs performance trade-offs in process outcome prediction.</p>
+      <p class="muted">Explainable ML • Remaining useful life prediction • Benchmark datasets</p>
       <div class="details">
         <ul>
           <li>Based on EJOR 2024 (Stevens & De Smedt)</li>
@@ -241,6 +399,7 @@
       </a>
       <span class="badge">Deep Learning</span>
       <h3>Turbo Engine Maintenance</h3>
+      <p class="muted">Deep & reinforcement learning • Predictive maintenance • Sensor time-series data</p>
       <div class="details">
         <ul>
           <li>Built and evaluated CNN, LSTM, and Reinforcement Learning (RL) models for Remaining Useful Life (RUL) prediction using NASA turbofan multivariate time-series sensor data.</li>
@@ -257,7 +416,7 @@
       </a>
       <span class="badge">Data Science</span>
       <h3>Medical Data Analysis</h3>
-      <p>ICU mortality prediction using eICU and MIMIC-III datasets.</p>
+      <p class="muted">Supervised learning • Hospital mortality prediction • Clinical ICU datasets</p>
       <div class="details"><ul><li>Tech: Python, scikit-learn, pandas, NumPy, Matplotlib, Seaborn, logistic regression, random forest, AdaBoost, Naive Bayes, eICU/MIMIC-III datasets</li></ul>
       </div>
     </div>
@@ -265,24 +424,49 @@
   </div>
 </section>
 
-<section id="contact">
+<section id="publications">
   <h2>Publications</h2>
-  <div class="story">
-    <div class="card">
-      <h3>Let’s talk</h3>
-      <p>If you’re interested in ML/AI research, applied machine learning, or data engineering collaborations, I’d love to connect.</p>
+
+  <div class="publications">
+
+    <div class="pub-card">
+      <div class="pub-meta">Master’s Thesis · 2025 · University of British Columbia</div>
+      <div class="pub-title">
+        A Machine Learning Approach to Survival Analysis for Sustainable Gas Well Decommissioning
+      </div>
       <p>
-        <a href="https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0449440" target="_blank">
-         A machine learning approach to survival analysis for sustainable gas well decommissioning</a><br/>
-        <a href="https://link.springer.com/chapter/10.1007/978-981-97-0573-3_30" target="_blank">
-         Predicting Diabetes Onset Through Symptom Analysis: A Machine-Learning Approach.</a>
+        Developed time-varying and ensemble survival models with explainability to
+        estimate production life and decommissioning timelines.
       </p>
+      <div class="pub-links">
+        <a href="https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0449440" target="_blank">
+          Thesis
+        </a>
+      </div>
     </div>
+
+    <div class="pub-card">
+      <div class="pub-meta">Peer-Reviewed Conference · Smart Cyber Conference · 2023</div>
+      <div class="pub-title">
+        Predicting Diabetes Onset Through Symptom Analysis: A Machine-Learning Approach
+      </div>
+      <p>
+        Applied supervised learning techniques to early diabetes prediction using
+        symptom-based medical datasets.
+      </p>
+      <div class="pub-links">
+        <a href="https://link.springer.com/chapter/10.1007/978-981-97-0573-3_30" target="_blank">
+          Springer Link
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
+
 <section id="contact">
-  <h2>Contact</h2>
+  <h2>Links</h2>
   <div class="story">
     <div class="card">
       <h3>Let’s talk</h3>
