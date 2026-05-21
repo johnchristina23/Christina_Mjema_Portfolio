@@ -3,258 +3,631 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Christina Mjema | Interactive ML / AI Portfolio</title>
+  <title>Christina Mjema | ML/AI Researcher & Engineer</title>
   <style>
     :root {
-      --bg: #020617;
-      --card: #0f172a;
-      --accent: #22d3ee;
-      --accent2: #a78bfa;
-      --text: #e5e7eb;
-      --muted: #94a3b8;
+      --bg-dark: #0a0e27;
+      --bg-card: #131829;
+      --bg-card-hover: #1a1f3a;
+      --accent-primary: #00d9ff;
+      --accent-secondary: #a78bfa;
+      --accent-tertiary: #ec4899;
+      --text-primary: #f0f4f8;
+      --text-secondary: #b0b8c8;
+      --text-muted: #7a8298;
+      --border-color: #1f2847;
+      --success: #10b981;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
 
     body {
-      margin: 0;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top, #020617, #000000);
-      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+      background: linear-gradient(135deg, var(--bg-dark) 0%, #0f1228 50%, #1a0f2e 100%);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Header / Hero */
     header {
-      min-height: auto;
-      padding: 3rem 1.5rem 2rem;
-      display: block;
-      text-align: center;
-      text-align: center;
-      padding: 3rem 1.5rem;
       position: relative;
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 217, 255, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(167, 139, 250, 0.06) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      margin-bottom: 0.25rem; /* reduced spacing */
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
     }
 
-    .subtitle {
-      font-size: 1.2rem;
-      color: var(--muted);
-      margin-bottom: 0.5rem; /* reduced spacing */
+    .tagline {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      font-weight: 400;
     }
 
-    .header-info p {
-      margin: 0.25rem 0 1.5rem; /* compact spacing for job titles */
+    .subheader {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
     }
 
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      padding: 0.85rem 1.8rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: var(--bg-dark);
+      border-color: transparent;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 217, 255, 0.2);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent-primary);
+      border-color: var(--accent-primary);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0, 217, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 14, 39, 0.7);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+      padding: 1rem 2rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-primary);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* Sections */
     section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 2.5rem 2rem;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
     }
-
 
     section h2 {
-      font-size: 2rem;
-      margin-bottom: 1.25rem;
-      text-align: left;
-      border-bottom: 1px solid #1e293b;
-      padding-bottom: 0.4rem;
+      font-size: 2.2rem;
+      margin-bottom: 3rem;
+      position: relative;
+      font-weight: 600;
+      display: inline-block;
     }
 
-    .story {
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: 2px;
+    }
+
+    /* Cards Grid */
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
+      margin-bottom: 2rem;
     }
 
     .card {
-      background: linear-gradient(180deg, var(--card), #020617);
-      border-radius: 20px;
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
       padding: 2rem;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
       cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.1), transparent);
+      transition: left 0.5s ease;
     }
 
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 30px 70px rgba(0,0,0,0.8);
+      transform: translateY(-8px);
+      border-color: var(--accent-primary);
+      box-shadow: 0 20px 60px rgba(0, 217, 255, 0.15);
     }
 
-    .badge {
+    .card:hover::before {
+      left: 100%;
+    }
+
+    .card-badge {
       display: inline-block;
-      padding: 0.3rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(34,211,238,0.15);
-      color: var(--accent);
+      padding: 0.35rem 0.85rem;
+      background: rgba(0, 217, 255, 0.15);
+      color: var(--accent-primary);
+      border-radius: 6px;
       font-size: 0.75rem;
-      margin-bottom: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .image {
-      height: 140px;
-      background: linear-gradient(135deg, #22d3ee33, #a78bfa33);
-      border-radius: 14px;
-      margin-bottom: 1.25rem;
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .card p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .card-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .card-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .expandable-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .card.expanded .expandable-content {
+      max-height: 500px;
+    }
+
+    .expand-icon {
+      display: inline-block;
+      transition: transform 0.3s ease;
+      margin-left: 0.5rem;
+    }
+
+    .card.expanded .expand-icon {
+      transform: rotate(180deg);
+    }
+
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .skill-group {
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(167, 139, 250, 0.05) 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .skill-group:hover {
+      border-color: var(--accent-primary);
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
+      transform: translateY(-4px);
+    }
+
+    .skill-group h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .skill-group h3::before {
+      content: '';
+      width: 3px;
+      height: 20px;
+      background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: 2px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-tag {
+      padding: 0.4rem 0.8rem;
+      background: rgba(176, 184, 200, 0.1);
+      color: var(--text-secondary);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid rgba(0, 217, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      background: rgba(0, 217, 255, 0.15);
+      color: var(--accent-primary);
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+    }
+
+    /* Publications */
+    .pub-card {
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
+      border-left: 4px solid var(--accent-primary);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      margin-bottom: 1.5rem;
+    }
+
+    .pub-card:hover {
+      transform: translateX(8px);
+      box-shadow: 0 15px 40px rgba(0, 217, 255, 0.1);
+    }
+
+    .pub-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .pub-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .pub-desc {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .pub-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .pub-links a {
+      color: var(--accent-primary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .pub-links a:hover {
+      gap: 0.6rem;
+    }
+
+    /* Contact Section */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
+      border: 2px solid var(--accent-primary);
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .contact-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-card p {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: rgba(0, 217, 255, 0.1);
+      border: 2px solid var(--accent-primary);
+      border-radius: 50%;
+      color: var(--accent-primary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1.3rem;
+    }
+
+    .social-link:hover {
+      background: var(--accent-primary);
+      color: var(--bg-dark);
+      transform: translateY(-4px);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .card:nth-child(2) { animation-delay: 0.1s; }
+    .card:nth-child(3) { animation-delay: 0.2s; }
+    .card:nth-child(4) { animation-delay: 0.3s; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 3.5rem 1.5rem 2.5rem;
+      }
+
+      section {
+        padding: 3rem 1.5rem;
+      }
+
+      section h2 {
+        font-size: 1.8rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Project image placeholder */
+    .project-image {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
-      color: #e5e7eb;
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      padding: 0.75rem;
-      background-size: contain;
-    }
-
-    .details {
-      display: none;
-      margin-top: 1rem;
+      color: var(--text-muted);
       font-size: 0.9rem;
-      color: var(--muted);
+      border: 1px dashed var(--border-color);
     }
-
-    .card.open .details { display: block; }
-
-    .xp-bar {
-      max-width: 400px;
-      margin: 1.5rem auto 0; /* slightly reduced margin */
-      background: #020617;
-      border: 1px solid #1e293b;
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
-    .xp-fill {
-      width: 82%;
-      height: 14px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-    }
-
-    footer {
-      text-align: center;
-      padding: 3rem 1.5rem;
-      border-top: 1px solid #1e293b;
-      color: var(--muted);
-    }
-
-    a { color: var(--accent); text-decoration: none; }
-
-
-      /* Publications */
-  .publications {
-    display: grid;
-    gap: 2rem;
-  }
-  
-  .pub-card {
-    background: linear-gradient(180deg, #020617, var(--card));
-    border-left: 4px solid var(--accent);
-    border-radius: 16px;
-    padding: 1.75rem 2rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .pub-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.7);
-  }
-  
-  .pub-meta {
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin-bottom: 0.5rem;
-  }
-  
-  .pub-title {
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin-bottom: 0.4rem;
-  }
-  
-  .pub-links a {
-    font-size: 0.85rem;
-    margin-right: 1rem;
-  }
-
-    /* Skills – compact, research-style */
-  .skills-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: space-between;
-  }
-
-  .skill-group {
-    flex: 1 1 180px;
-    border-left: 2px solid var(--accent);
-    padding-left: 1rem;
-    max-width: 220px;
-  }
-
-
-  .skill-group h3 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: #e5e7eb;
-    font-weight: 600;
-  }
-
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-  }
-
-  .skill-tag {
-    font-size: 0.72rem;
-    padding: 0.2rem 0.55rem;
-    border-radius: 6px;
-    background: #020617;
-    border: 1px solid #1e293b;
-    color: var(--muted);
-  }
-
-  .muted {
-    font-size: 0.8rem;
-    color: var(--muted);
-    margin: 0.3rem 0 0.6rem;
-  }
-
   </style>
 </head>
 <body>
 
+<nav>
+  <div class="nav-brand">CM</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
 <header>
-  <div>
+  <div class="header-content">
     <h1>Christina Mjema</h1>
-    <p class="subtitle">
-      MSc Computer Science · University of British Columbia · AI & Survival Analysis
+    <p class="tagline">ML/AI Researcher & Engineer</p>
+    <p class="subheader">
+      MSc Computer Science, UBC • Specializing in Explainable AI, Survival Analysis & Predictive Maintenance • Building intelligent systems that explain themselves
     </p>
-    <p class="subtitle">Building intelligent systems that explain themselves</p>
-    <div class="header-info">
-      <p>ML / AI Researcher • Machine Learning Engineer • Data Engineer</p>
+    <div class="cta-buttons">
+      <a href="#contact" class="btn btn-primary">Get In Touch</a>
+      <a href="https://github.com/johnchristina23" target="_blank" class="btn btn-secondary">View GitHub</a>
     </div>
   </div>
 </header>
 
 <section id="skills">
-  <h2>Skills</h2>
-
-  <div class="skills-grid">
-
+  <h2>Core Expertise</h2>
+  <div class="skills-container">
     <div class="skill-group">
       <h3>Machine Learning & AI</h3>
       <div class="skill-tags">
         <span class="skill-tag">Survival Analysis</span>
         <span class="skill-tag">Predictive Modeling</span>
-        <span class="skill-tag">Time-Series</span>
-        <span class="skill-tag">Explainable AI</span>
-        <span class="skill-tag">SHAP</span>
+        <span class="skill-tag">Time-Series Analysis</span>
+        <span class="skill-tag">Explainable AI (XAI)</span>
+        <span class="skill-tag">SHAP Values</span>
         <span class="skill-tag">LIME</span>
       </div>
     </div>
@@ -264,37 +637,22 @@
       <div class="skill-tags">
         <span class="skill-tag">Neural Networks</span>
         <span class="skill-tag">CNN</span>
-        <span class="skill-tag">RNN</span>
-        <span class="skill-tag">LSTM</span>
-        <span class="skill-tag">Attention</span>
+        <span class="skill-tag">RNN / LSTM</span>
+        <span class="skill-tag">Attention Mechanisms</span>
         <span class="skill-tag">Reinforcement Learning</span>
+        <span class="skill-tag">TensorFlow / Keras</span>
       </div>
     </div>
 
     <div class="skill-group">
       <h3>Data Engineering</h3>
       <div class="skill-tags">
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">PostgreSQL</span>
-        <span class="skill-tag">MySQL</span>
-        <span class="skill-tag">MSSQL</span>
+        <span class="skill-tag">Python / PySpark</span>
+        <span class="skill-tag">SQL (PostgreSQL, MySQL, MSSQL)</span>
         <span class="skill-tag">Databricks</span>
         <span class="skill-tag">AWS</span>
-        <span class="skill-tag">Docker</span>
-      </div>
-    </div>
-
-    <div class="skill-group">
-      <h3>Programming</h3>
-      <div class="skill-tags">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">Java</span>
-        <span class="skill-tag">PySpark</span>
-        <span class="skill-tag">C/C++</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">R</span>
-        <span class="skill-tag">Git</span>
-        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">Docker & Kubernetes</span>
+        <span class="skill-tag">Data Pipelines</span>
       </div>
     </div>
 
@@ -304,190 +662,190 @@
         <span class="skill-tag">Experimental Design</span>
         <span class="skill-tag">Model Evaluation</span>
         <span class="skill-tag">Academic Writing</span>
-        <span class="skill-tag">Teaching</span>
-        <span class="skill-tag">Mentorship</span>
+        <span class="skill-tag">Teaching & Mentoring</span>
+        <span class="skill-tag">Technical Documentation</span>
+        <span class="skill-tag">Presentation Design</span>
       </div>
     </div>
 
-  </div>
-</section>
-
-
-  <section id="training">
-  <h2>Training & Certifications</h2>
-  <div class="story">
-
-    <div class="card">
-      <span class="badge">Graduate Coursework</span>
-      <h3>Advanced Machine Learning</h3>
-      <p>
-        Deep learning, survival analysis, explainable AI, reinforcement learning,
-        and large-scale experimentation.
-      </p>
+    <div class="skill-group">
+      <h3>Programming Languages</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">C/C++</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">R</span>
+        <span class="skill-tag">Git / Version Control</span>
+      </div>
     </div>
 
-    <div class="card">
-      <span class="badge">Teaching & Mentorship</span>
-      <h3>Graduate Teaching Assistant</h3>
-      <p>
-        Data Structures & Algorithms, Parallel Computing, Web Programming,
-        Capstone Software Engineering.
-      </p>
+    <div class="skill-group">
+      <h3>Tools & Frameworks</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">scikit-learn</span>
+        <span class="skill-tag">XGBoost</span>
+        <span class="skill-tag">Pandas & NumPy</span>
+        <span class="skill-tag">Matplotlib & Seaborn</span>
+        <span class="skill-tag">Jupyter & VS Code</span>
+        <span class="skill-tag">Linux</span>
+      </div>
     </div>
-
-    <div class="card">
-      <span class="badge">Professional Training</span>
-      <h3>Cloud & MLOps Foundations</h3>
-      <p>
-        Dockerized ML pipelines, AWS-based deployments, reproducible research workflows.
-      </p>
-    </div>
-
-    <div class="card">
-      <span class="badge">Certifications</span>
-      <h3>Ongoing & Completed</h3>
-      <p>
-        Machine Learning Specializations, Deep Learning with TensorFlow,
-        Advanced Data Analytics (self-paced & academic).
-      </p>
-    </div>
-
   </div>
 </section>
 
 <section id="projects">
   <h2>Research & Applied Work</h2>
-  <div class="story">
-
-    <div class="card" onclick="toggleCard(this)">
-      <a href="http://hdl.handle.net/2429/91643">
-        <img class="image" src="22388.png" alt="Survival analysis curve">
-      </a>
-      <span class="badge">Research / ML</span>
+  <div class="grid">
+    <div class="card" onclick="toggleExpand(this)">
+      <div class="project-image">Survival Analysis</div>
+      <span class="card-badge">Research • ML</span>
       <h3>Gas Well Lifecycle Prediction</h3>
-      <p class="muted">Survival analysis • Gas well lifecycle modeling • Longitudinal production data</p>      <div class="details">
-        <ul>
-          <li>2M+ records, 30-year horizons</li>
-          <li>Time-varying Cox, RSF, hybrid models</li>
-          <li>SHAP & LIME faithfulness analysis</li>
-          <li>Tech: Python, R, scikit- survival, pandas, NumPy, Matplotlib, SHAP, LIME, time-varying Cox, RSF, hybrid models, Longitudinal predictors modeling</li>
+      <p class="card-meta">
+        <span>🔬 Survival Analysis</span>
+        <span>📊 Longitudinal Data</span>
+      </p>
+      <p>Developed time-varying and ensemble survival models to predict gas well production lifecycles and optimize decommissioning timelines across 2M+ historical records.</p>
+      <div class="expandable-content">
+        <strong>Impact & Methods:</strong>
+        <ul style="margin-top: 0.5rem; padding-left: 1.2rem;">
+          <li>Processed 2M+ records spanning 30-year production horizons</li>
+          <li>Implemented time-varying Cox models, Random Survival Forests, and hybrid approaches</li>
+          <li>Applied SHAP & LIME for model faithfulness analysis and stakeholder interpretability</li>
+          <li><strong>Tech Stack:</strong> Python, R, scikit-survival, pandas, NumPy, Matplotlib, SHAP, LIME</li>
         </ul>
       </div>
+      <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); cursor: pointer;">
+        Learn more <span class="expand-icon">▼</span>
+      </p>
     </div>
 
-    <div class="card" onclick="toggleCard(this)">
-      <a href="https://github.com/johnchristina23/Explainability-in-RUL-prediction.git">
-        <img class="image" src="portfolio_RUL.png" alt="Explainability comparison">
-      </a>
-      <span class="badge">Explainable AI · Seminar</span>
+    <div class="card" onclick="toggleExpand(this)">
+      <div class="project-image">Explainability Benchmark</div>
+      <span class="card-badge">Explainable AI • Seminar</span>
       <h3>Explainability in RUL Prediction</h3>
-      <p class="muted">Explainable ML • Remaining useful life prediction • Benchmark datasets</p>
-      <div class="details">
-        <ul>
-          <li>Based on EJOR 2024 (Stevens & De Smedt)</li>
-          <li>Compared LR, RF, XGB, CNN, LSTM, GLRM</li>
-          <li>Extended metrics to RUL regression</li>
-          <li>Presented at COSC 590D, UBC (Aug 2024)</li>
-          <li>Tech: Python, scikit-learn, XGBoost, TensorFlow/Keras, SHAP, LIME, attention-based explainers, Matplotlib</li>
+      <p class="card-meta">
+        <span>🔍 Interpretability</span>
+        <span>📈 Benchmarking</span>
+      </p>
+      <p>Comprehensive benchmark study comparing explainability methods across 6 model architectures for Remaining Useful Life regression tasks using industrial datasets.</p>
+      <div class="expandable-content">
+        <strong>Research Highlights:</strong>
+        <ul style="margin-top: 0.5rem; padding-left: 1.2rem;">
+          <li>Extended EJOR 2024 framework (Stevens & De Smedt) to RUL regression domain</li>
+          <li>Compared LR, RF, XGB, CNN, LSTM, and GLRM with multiple explainability metrics</li>
+          <li>Presented findings at COSC 590D, UBC (Aug 2024)</li>
+          <li><strong>Tech Stack:</strong> Python, scikit-learn, XGBoost, TensorFlow/Keras, SHAP, LIME, Matplotlib</li>
         </ul>
       </div>
+      <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); cursor: pointer;">
+        View on GitHub <span class="expand-icon">▼</span>
+      </p>
     </div>
 
-    <div class="card" onclick="toggleCard(this)">
-      <a href="https://github.com/johnchristina23/Predictive-Maintenance-Models-for-Turbofan-Engines.git">
-        <img class="image" src="portfolio_RL.png" alt="Model pipeline">
-      </a>
-      <span class="badge">Deep Learning</span>
-      <h3>Turbo Engine Maintenance</h3>
-      <p class="muted">Deep & reinforcement learning • Predictive maintenance • Sensor time-series data</p>
-      <div class="details">
-        <ul>
-          <li>Built and evaluated CNN, LSTM, and Reinforcement Learning (RL) models for Remaining Useful Life (RUL) prediction using NASA turbofan multivariate time-series sensor data.</li>
-          <li>Achieved state-of-the-art performance with LSTM (MSE = 0.0000124, MAE = 0.0027, R² = 0.9995), outperforming CNN (R² = 0.9935).</li>
-          <li>Designed and analyzed an RL-based predictive maintenance framework, assessing reward convergence, model limitations, and validating performance using MSE, MAE, and R², with extensions proposed for oil-well RUL prediction.</li>
-          <li>Tech: Python, TensorFlow/Keras, Deep Learning, Reinforcement Learning, Time-Series Analysis, Model Evaluation, Predictive Maintenance</li>
+    <div class="card" onclick="toggleExpand(this)">
+      <div class="project-image">Deep Learning Pipeline</div>
+      <span class="card-badge">Deep Learning</span>
+      <h3>Turbofan Engine Predictive Maintenance</h3>
+      <p class="card-meta">
+        <span>🤖 Neural Networks</span>
+        <span>⚙️ Maintenance</span>
+      </p>
+      <p>Built state-of-the-art CNN, LSTM, and Reinforcement Learning models for RUL prediction on NASA turbofan multivariate sensor data with 99.95% R² performance.</p>
+      <div class="expandable-content">
+        <strong>Technical Achievements:</strong>
+        <ul style="margin-top: 0.5rem; padding-left: 1.2rem;">
+          <li>LSTM model achieved state-of-the-art: MSE=0.0000124, MAE=0.0027, R²=0.9995</li>
+          <li>Significantly outperformed CNN baseline (R²=0.9935) on time-series prediction</li>
+          <li>Designed RL-based maintenance framework with convergence analysis and performance validation</li>
+          <li>Extended methodology toward oil-well RUL prediction applications</li>
+          <li><strong>Tech Stack:</strong> Python, TensorFlow/Keras, Deep Learning, Reinforcement Learning</li>
         </ul>
       </div>
+      <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); cursor: pointer;">
+        Learn more <span class="expand-icon">▼</span>
+      </p>
     </div>
 
-    <div class="card" onclick="toggleCard(this)">
-      <a href="https://github.com/johnchristina23/Explainability-in-Hospital-Mortality-Prediction.git">
-        <img class="image" src="SHAP_forceSample_RF_MIMIC.png" alt="Architecture diagram">
-      </a>
-      <span class="badge">Data Science</span>
-      <h3>Medical Data Analysis</h3>
-      <p class="muted">Supervised learning • Hospital mortality prediction • Clinical ICU datasets</p>
-      <div class="details"><ul><li>Tech: Python, scikit-learn, pandas, NumPy, Matplotlib, Seaborn, logistic regression, random forest, AdaBoost, Naive Bayes, eICU/MIMIC-III datasets</li></ul>
+    <div class="card" onclick="toggleExpand(this)">
+      <div class="project-image">Medical Analytics</div>
+      <span class="card-badge">Data Science</span>
+      <h3>Hospital Mortality & ICU Analytics</h3>
+      <p class="card-meta">
+        <span>📋 Clinical Data</span>
+        <span>🏥 Healthcare ML</span>
+      </p>
+      <p>Applied supervised learning techniques to clinical ICU datasets for hospital mortality prediction and model interpretability analysis using eICU and MIMIC-III data.</p>
+      <div class="expandable-content">
+        <strong>Methodology:</strong>
+        <ul style="margin-top: 0.5rem; padding-left: 1.2rem;">
+          <li>Engineered features from heterogeneous clinical time-series and static patient data</li>
+          <li>Evaluated logistic regression, random forest, AdaBoost, and Naive Bayes baselines</li>
+          <li>Generated SHAP force plots and integrated explanations for clinical stakeholder communication</li>
+          <li><strong>Tech Stack:</strong> Python, scikit-learn, pandas, NumPy, Matplotlib, Seaborn</li>
+        </ul>
       </div>
+      <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); cursor: pointer;">
+        Explore <span class="expand-icon">▼</span>
+      </p>
     </div>
-
   </div>
 </section>
 
 <section id="publications">
-  <h2>Publications</h2>
+  <h2>Publications & Theses</h2>
 
-  <div class="publications">
-
-    <div class="pub-card">
-      <div class="pub-meta">Master’s Thesis · 2025 · University of British Columbia</div>
-      <div class="pub-title">
-        A Machine Learning Approach to Survival Analysis for Sustainable Gas Well Decommissioning
-      </div>
-      <p>
-        Developed time-varying and ensemble survival models with explainability to
-        estimate production life and decommissioning timelines.
-      </p>
-      <div class="pub-links">
-        <a href="https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0449440" target="_blank">
-          Thesis
-        </a>
-      </div>
+  <div class="pub-card">
+    <div class="pub-meta">Master's Thesis • 2025 • University of British Columbia</div>
+    <div class="pub-title">A Machine Learning Approach to Survival Analysis for Sustainable Gas Well Decommissioning</div>
+    <p class="pub-desc">Developed time-varying and ensemble survival models with explainability mechanisms to estimate production lifecycles and inform sustainable decommissioning timelines for energy infrastructure.</p>
+    <div class="pub-links">
+      <a href="https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0449440" target="_blank">Read Thesis →</a>
     </div>
+  </div>
 
-    <div class="pub-card">
-      <div class="pub-meta">Peer-Reviewed Conference · Smart Cyber Conference · 2023</div>
-      <div class="pub-title">
-        Predicting Diabetes Onset Through Symptom Analysis: A Machine-Learning Approach
-      </div>
-      <p>
-        Applied supervised learning techniques to early diabetes prediction using
-        symptom-based medical datasets.
-      </p>
-      <div class="pub-links">
-        <a href="https://link.springer.com/chapter/10.1007/978-981-97-0573-3_30" target="_blank">
-          Springer Link
-        </a>
-      </div>
+  <div class="pub-card">
+    <div class="pub-meta">Peer-Reviewed Conference • Smart Cyber Conference • 2023</div>
+    <div class="pub-title">Predicting Diabetes Onset Through Symptom Analysis: A Machine-Learning Approach</div>
+    <p class="pub-desc">Applied supervised learning techniques to medical symptom datasets for early diabetes prediction, demonstrating practical applications of ML in preventive healthcare.</p>
+    <div class="pub-links">
+      <a href="https://link.springer.com/chapter/10.1007/978-981-97-0573-3_30" target="_blank">Read on Springer →</a>
     </div>
-
   </div>
 </section>
 
-
 <section id="contact">
-  <h2>Links</h2>
-  <div class="story">
-    <div class="card">
-      <h3>Let’s talk</h3>
-      <p>If you’re interested in ML/AI research, applied machine learning, or data engineering collaborations, I’d love to connect.</p>
-      <p>
-        <!-- 📧 <a href="mailto:mjemachristinaj@gmail.com">mjemachristinaj@gmail.com</a><br/> -->
-        <a href="https://www.linkedin.com/in/mjema-christina-john/" target="_blank">LinkedIn</a><br/>
-        <a href="https://github.com/johnchristina23" target="_blank">GitHub</a>
-      </p>
+  <h2>Let's Collaborate</h2>
+  <div class="contact-card">
+    <h3>Interested in Working Together?</h3>
+    <p>I'm open to freelance projects, research collaborations, and consulting opportunities in ML/AI, explainable AI, and data engineering. Let's build something impactful.</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/mjema-christina-john/" target="_blank" class="social-link" title="LinkedIn">in</a>
+      <a href="https://github.com/johnchristina23" target="_blank" class="social-link" title="GitHub">⚙</a>
+      <a href="mailto:mjemachristinaj@gmail.com" class="social-link" title="Email">✉</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Christina Mjema</p>
+  <p>© 2025 Christina Mjema • ML/AI Researcher & Engineer</p>
 </footer>
 
 <script>
-  function toggleCard(card) {
-    card.classList.toggle('open');
+  function toggleExpand(card) {
+    card.classList.toggle('expanded');
   }
+
+  // Smooth scroll behavior for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
 </script>
 
 </body>
